@@ -20,7 +20,7 @@ mainDependencies {
    compile group: "org.jfree", name: "jfreechart", version: "1.0.17"
    compile group: "org.jfree", name: "jcommon", version: "1.0.21"
    compile group: "us.ihmc", name: "ihmc-commons", version: "0.24.0"
-   compile group: "us.ihmc", name: "ihmc-graphics-description", version: "0.12.7"
+   compile group: "us.ihmc", name: "ihmc-graphics-description", version: "0.12.8"
 }
 
 testDependencies {
