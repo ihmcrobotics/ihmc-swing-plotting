@@ -22,7 +22,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import us.ihmc.commons.PrintTools;
+import us.ihmc.commons.FormattingTools;
+import us.ihmc.commons.MathTools;
 import us.ihmc.euclid.geometry.Line2D;
 import us.ihmc.euclid.referenceFrame.ReferenceFrame;
 import us.ihmc.euclid.transform.RigidBodyTransform;
@@ -43,8 +44,7 @@ import us.ihmc.graphicsDescription.plotting.frames.PixelsReferenceFrame;
 import us.ihmc.graphicsDescription.plotting.frames.PlotterFrameSpace;
 import us.ihmc.graphicsDescription.plotting.frames.PlotterSpaceConverter;
 import us.ihmc.graphicsDescription.yoGraphics.plotting.PlotterInterface;
-import us.ihmc.commons.MathTools;
-import us.ihmc.commons.FormattingTools;
+import us.ihmc.log.LogTools;
 
 /**
  * TODO Deprecate archaic methods
@@ -558,7 +558,7 @@ public class Plotter implements PlotterInterface
             }
             else
             {
-               PrintTools.error("Plotter: one of the artifacts you added was null");
+               LogTools.error("Plotter: one of the artifacts you added was null");
             }
          }
       }
