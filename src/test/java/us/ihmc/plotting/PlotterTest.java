@@ -2,6 +2,7 @@ package us.ihmc.plotting;
 
 import static us.ihmc.robotics.Assert.*;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import us.ihmc.continuousIntegration.ContinuousIntegrationTools;
@@ -18,6 +19,7 @@ import us.ihmc.graphicsDescription.plotting.frames.PlotterFrameSpace;
 import us.ihmc.graphicsDescription.plotting.frames.PlotterSpaceConverter;
 import us.ihmc.commons.thread.ThreadTools;
 
+@Tag("gui")
 public class PlotterTest
 {
    @Test// timeout = 300000
