@@ -5,7 +5,8 @@ import static us.ihmc.robotics.Assert.*;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import us.ihmc.continuousIntegration.ContinuousIntegrationTools;
+import us.ihmc.commons.ContinuousIntegrationTools;
+import us.ihmc.commons.thread.ThreadTools;
 import us.ihmc.euclid.referenceFrame.ReferenceFrame;
 import us.ihmc.euclid.tools.EuclidCoreTestTools;
 import us.ihmc.euclid.transform.RigidBodyTransform;
@@ -17,7 +18,6 @@ import us.ihmc.graphicsDescription.plotting.frames.MetersReferenceFrame;
 import us.ihmc.graphicsDescription.plotting.frames.PixelsReferenceFrame;
 import us.ihmc.graphicsDescription.plotting.frames.PlotterFrameSpace;
 import us.ihmc.graphicsDescription.plotting.frames.PlotterSpaceConverter;
-import us.ihmc.commons.thread.ThreadTools;
 
 @Tag("gui")
 public class PlotterTest
