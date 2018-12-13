@@ -1,8 +1,9 @@
 package us.ihmc.plotting;
 
-import static org.junit.Assert.assertEquals;
+import static us.ihmc.robotics.Assert.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import us.ihmc.continuousIntegration.ContinuousIntegrationTools;
 import us.ihmc.euclid.referenceFrame.ReferenceFrame;
@@ -18,9 +19,10 @@ import us.ihmc.graphicsDescription.plotting.frames.PlotterFrameSpace;
 import us.ihmc.graphicsDescription.plotting.frames.PlotterSpaceConverter;
 import us.ihmc.commons.thread.ThreadTools;
 
+@Tag("gui")
 public class PlotterTest
 {
-   @Test(timeout = 300000)
+   @Test// timeout = 300000
    public void testPlotter()
    {
       Plotter plotter = new Plotter();
@@ -38,7 +40,7 @@ public class PlotterTest
    }
 
    @SuppressWarnings("serial")
-   @Test(timeout = 30000)
+   @Test// timeout = 30000
    public void testPlotterReferenceFrames()
    {
       PlotterSpaceConverter spaceConverter = new PlotterSpaceConverter()
@@ -113,7 +115,7 @@ public class PlotterTest
       EuclidCoreTestTools.assertTuple2DEquals("Point not equal", new Point2D(1.0, 5.0), point, 1e-7);
    }
 
-   @Test(timeout = 30000)
+   @Test// timeout = 30000
    public void testBuildAPlotterAndCallSomeStuff()
    {
       Plotter plotter = new Plotter();
