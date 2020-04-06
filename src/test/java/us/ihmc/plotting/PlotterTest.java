@@ -1,6 +1,6 @@
 package us.ihmc.plotting;
 
-import static us.ihmc.robotics.Assert.*;
+import static us.ihmc.robotics.Assert.assertEquals;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -75,7 +75,7 @@ public class PlotterTest
          @Override
          protected void updateTransformToParent(RigidBodyTransform transformToParent)
          {
-            transformToParent.setTranslation(50.0, 100.0, 0.0);
+            transformToParent.getTranslation().set(50.0, 100.0, 0.0);
             transformToParent.appendYawRotation(Math.PI);
          }
       };
