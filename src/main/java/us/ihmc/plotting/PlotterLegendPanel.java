@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -17,7 +18,7 @@ import us.ihmc.graphicsDescription.plotting.artifact.ArtifactsChangedListener;
 public class PlotterLegendPanel extends JPanel implements ArtifactsChangedListener
 {
    private static final long serialVersionUID = -8268027977270506164L;
-   private ArrayList<Artifact> artifacts = new ArrayList<>();
+   private final List<Artifact> artifacts = new ArrayList<>();
    private final Plotter2DAdapter graphics2dAdapter;
 
    private final Point2D drawOrigin = new Point2D();
@@ -29,7 +30,7 @@ public class PlotterLegendPanel extends JPanel implements ArtifactsChangedListen
       this.graphics2dAdapter = graphics2dAdapter;
    }
 
-   public void setArtifacts(ArrayList<Artifact> artifacts)
+   public void setArtifacts(List<Artifact> artifacts)
    {
       this.artifacts.clear();
       this.artifacts.addAll(artifacts);
@@ -87,7 +88,7 @@ public class PlotterLegendPanel extends JPanel implements ArtifactsChangedListen
    }
 
    @Override
-   public void artifactsChanged(ArrayList<Artifact> newArtifacts)
+   public void artifactsChanged(List<Artifact> newArtifacts)
    {
       setArtifacts(newArtifacts);
       repaint();
