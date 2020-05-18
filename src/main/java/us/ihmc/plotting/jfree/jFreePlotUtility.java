@@ -59,7 +59,7 @@ public class jFreePlotUtility extends JFrame
 
       ChartPanel chartPanel = new ChartPanel(chart);
       chartPanel.setPreferredSize(new java.awt.Dimension(WIDTH, HEIGHT));
-      this.setContentPane(chartPanel);
+      setContentPane(chartPanel);
    }
 
    public void createXYLineChart(double[][] xDATA, double[][] yDATA, String TITLE, String XLABEL, String YLABEL, int WIDTH, int HEIGHT,
@@ -90,7 +90,7 @@ public class jFreePlotUtility extends JFrame
 
       ChartPanel chartPanel = new ChartPanel(chart);
       chartPanel.setPreferredSize(new java.awt.Dimension(WIDTH, HEIGHT));
-      this.setContentPane(chartPanel);
+      setContentPane(chartPanel);
    }
 
    public void createCombinedChart(double[][] xDATA, double[][] yDATA, String TITLE, String[] XLABEL, String[] YLABEL, int WIDTH, int HEIGHT,
