@@ -6,14 +6,8 @@ package us.ihmc.plotting.jfree;
 public class jFreePlotter
 {
    private String TITLE = "jFree Chart";
-   private String[] XLABEL = new String[]
-   {
-      "x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"
-   };
-   private String[] YLABEL = new String[]
-   {
-      "y1", "y2", "y3", "y4", "y5", "y6", "y7", "y8", "y9", "y10"
-   };
+   private String[] XLABEL = new String[] {"x1", "x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10"};
+   private String[] YLABEL = new String[] {"y1", "y2", "y3", "y4", "y5", "y6", "y7", "y8", "y9", "y10"};
    private int WIDTH = 500;
    private int HEIGHT = 270;
    private double[][] XDATA = new double[10][];

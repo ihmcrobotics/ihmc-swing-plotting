@@ -37,23 +37,25 @@ public class GraphingUtility
       return createGraph(title, xAxisLabel, yAxisLabel, dataset, true, false, showLegend);
    }
 
-   public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, boolean showSeriesShape, boolean independentYaxes)
+   public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, boolean showSeriesShape,
+                                        boolean independentYaxes)
    {
       return createGraph(title, xAxisLabel, yAxisLabel, dataset, showSeriesShape, independentYaxes, true);
    }
 
-   public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, boolean showSeriesShape, boolean independentYaxes, boolean showLegend)
+   public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, boolean showSeriesShape,
+                                        boolean independentYaxes, boolean showLegend)
    {
       // create the chart
-      final JFreeChart chart = ChartFactory.createXYLineChart(title,    // chart title
-         xAxisLabel,    // x axis label
-         yAxisLabel,    // y axis label
-         dataset,    // data
-         PlotOrientation.VERTICAL,
-         showLegend, // include legend
-         true,    // tooltips
-         false    // urls
-            );
+      final JFreeChart chart = ChartFactory.createXYLineChart(title, // chart title
+                                                              xAxisLabel, // x axis label
+                                                              yAxisLabel, // y axis label
+                                                              dataset, // data
+                                                              PlotOrientation.VERTICAL,
+                                                              showLegend, // include legend
+                                                              true, // tooltips
+                                                              false // urls
+      );
 
       // NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
       chart.setBackgroundPaint(Color.white);
@@ -68,10 +70,9 @@ public class GraphingUtility
       // plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
       plot.setDomainGridlinePaint(Color.lightGray);
       plot.setRangeGridlinePaint(Color.lightGray);
-      
-      
+
       final XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-       renderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
+      renderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
 
       // renderer.setSeriesLinesVisible(0, false);
       // renderer.setSeriesShapesVisible(1, false);
@@ -84,7 +85,6 @@ public class GraphingUtility
          }
       }
 
-
       plot.setRenderer(renderer);
 
       // change the auto tick unit selection to integer units only...
@@ -92,82 +92,78 @@ public class GraphingUtility
       rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
       if (independentYaxes && plot.getSeriesCount() > 1)
-      {  
-         for(int i=0; i<plot.getSeriesCount(); i++)
+      {
+         for (int i = 0; i < plot.getSeriesCount(); i++)
          {
             NumberAxis axis = new NumberAxis("Additional Axes " + i);
             axis.setAutoRange(true);
             plot.setRangeAxis(1, axis);
-            plot.mapDatasetToRangeAxis(1, 1);            
+            plot.mapDatasetToRangeAxis(1, 1);
          }
-         
+
       }
-      
-//      
-//      plot.setRangeAxis(1,valueAxis1);
-      
+
+      //      
+      //      plot.setRangeAxis(1,valueAxis1);
+
       // plot.getRangeAxis().setRange(90.0, 100.0);
 
-      
       ChartPanel chartPanel = new ChartPanel(chart);
 
-    
       // chartPanel.setPreferredSize(new java.awt.Dimension(600, 400));
       return chartPanel;
    }
-   
+
    /**
-    * 
     * @param chartPanel
     * @param dataset
     * @param yAxisLabel
     * @param showSeriesShape
     * @param independentYaxis
-    * @param yAxisMin Set this to NaN to use autoscaling
+    * @param yAxisMin         Set this to NaN to use autoscaling
     * @param yAxisMax
     */
-   public static void addDataSetToXYPlot(ChartPanel chartPanel, XYDataset dataset, String yAxisLabel, boolean showSeriesShape, boolean independentYaxis, double yAxisMin, double yAxisMax)
+   public static void addDataSetToXYPlot(ChartPanel chartPanel, XYDataset dataset, String yAxisLabel, boolean showSeriesShape, boolean independentYaxis,
+                                         double yAxisMin, double yAxisMax)
    {
       XYPlot plot = chartPanel.getChart().getXYPlot();
-      
+
       int seriesCount = plot.getSeriesCount();
       if (independentYaxis)
       {
          NumberAxis axis = new NumberAxis(yAxisLabel);
-         if(Double.isNaN(yAxisMin))
+         if (Double.isNaN(yAxisMin))
             axis.setAutoRange(true);
          else
             axis.setRange(yAxisMin, yAxisMax);
-         
+
          plot.setRangeAxis(seriesCount, axis);
-         
-         plot.mapDatasetToRangeAxis(seriesCount, seriesCount);   
+
+         plot.mapDatasetToRangeAxis(seriesCount, seriesCount);
       }
 
       plot.setDataset(seriesCount, dataset);
 
-//       XYLineAndShapeRenderer xyLineAndShapeRenderer = new XYLineAndShapeRenderer();
-       XYLineAndShapeRenderer xyLineAndShapeRenderer = (XYLineAndShapeRenderer) plot.getRenderer();           // get the base xyrenderer
-//      xyLineAndShapeRenderer.setSeriesPaint(seriesCount, plot.getDrawingSupplier().getNextPaint());
+      //       XYLineAndShapeRenderer xyLineAndShapeRenderer = new XYLineAndShapeRenderer();
+      XYLineAndShapeRenderer xyLineAndShapeRenderer = (XYLineAndShapeRenderer) plot.getRenderer(); // get the base xyrenderer
+      //      xyLineAndShapeRenderer.setSeriesPaint(seriesCount, plot.getDrawingSupplier().getNextPaint());
       plot.setRenderer(seriesCount, xyLineAndShapeRenderer);
-       xyLineAndShapeRenderer.setSeriesToolTipGenerator(seriesCount, new StandardXYToolTipGenerator());
+      xyLineAndShapeRenderer.setSeriesToolTipGenerator(seriesCount, new StandardXYToolTipGenerator());
       if (!showSeriesShape)
       {
-//         xyLineAndShapeRenderer = (XYLineAndShapeRenderer) plot.getRenderer();
-         xyLineAndShapeRenderer.setSeriesShapesVisible(0, false);   
-      }      
+         //         xyLineAndShapeRenderer = (XYLineAndShapeRenderer) plot.getRenderer();
+         xyLineAndShapeRenderer.setSeriesShapesVisible(0, false);
+      }
    }
 
-   
    public static void addVerticalMarkerToXYPlot(ChartPanel chartPanel, double xValue)
    {
       ValueMarker marker = new ValueMarker(xValue);
       marker.setPaint(Color.BLACK);
-      
+
       XYPlot plot = (XYPlot) chartPanel.getChart().getPlot();
       plot.addDomainMarker(marker);
    }
-
 
    public static void increaseFontSize(JFreeChart chart, int amount)
    {
@@ -211,33 +207,34 @@ public class GraphingUtility
 
       plot.setRangeAxis(valueAxis);
 
-       if ( chart.getLegend() != null )
-       {
-           font = chart.getLegend().getItemFont();
-           size = font.getSize();
-           size += amount;
-           bigger = new Font(font.getName(), font.getStyle(), size);
-           chart.getLegend().setItemFont(bigger);
-       }
+      if (chart.getLegend() != null)
+      {
+         font = chart.getLegend().getItemFont();
+         size = font.getSize();
+         size += amount;
+         bigger = new Font(font.getName(), font.getStyle(), size);
+         chart.getLegend().setItemFont(bigger);
+      }
    }
 
-    public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, double minRange, double maxRange)
-    {
-       return createGraph(title,xAxisLabel,yAxisLabel,dataset,minRange,maxRange,true);
-    }
+   public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, double minRange, double maxRange)
+   {
+      return createGraph(title, xAxisLabel, yAxisLabel, dataset, minRange, maxRange, true);
+   }
 
-    public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, double minRange, double maxRange, boolean showLegend)
+   public static ChartPanel createGraph(String title, String xAxisLabel, String yAxisLabel, XYDataset dataset, double minRange, double maxRange,
+                                        boolean showLegend)
    {
       // create the chart
-      final JFreeChart chart = ChartFactory.createXYLineChart(title,    // chart title
-         xAxisLabel,    // x axis label
-         yAxisLabel,    // y axis label
-         dataset,    // data
-         PlotOrientation.VERTICAL,
-         showLegend,    // include legend
-         true,    // tooltips
-         false    // urls
-            );
+      final JFreeChart chart = ChartFactory.createXYLineChart(title, // chart title
+                                                              xAxisLabel, // x axis label
+                                                              yAxisLabel, // y axis label
+                                                              dataset, // data
+                                                              PlotOrientation.VERTICAL,
+                                                              showLegend, // include legend
+                                                              true, // tooltips
+                                                              false // urls
+      );
 
       // NOW DO SOME OPTIONAL CUSTOMISATION OF THE CHART...
       chart.setBackgroundPaint(Color.white);
@@ -254,7 +251,7 @@ public class GraphingUtility
       plot.setRangeGridlinePaint(Color.lightGray);
 
       final XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-       renderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
+      renderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
 
       // renderer.setSeriesLinesVisible(0, false);
       // renderer.setSeriesShapesVisible(1, false);

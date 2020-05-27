@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -36,7 +37,7 @@ public class PlotterShowHideMenu extends JPanel implements ArtifactsChangedListe
    private ArrayList<JComponent> componentList = new ArrayList<>();
 
    private HashMap<String, ArrayList<JCheckBox>> boxesByLabel = new HashMap<>();
-   
+
    private Point2D drawOrigin = new Point2D();
 
    public PlotterShowHideMenu(Plotter plotter)
@@ -46,7 +47,7 @@ public class PlotterShowHideMenu extends JPanel implements ArtifactsChangedListe
    }
 
    @Override
-   public void artifactsChanged(ArrayList<Artifact> newArtifacts)
+   public void artifactsChanged(List<Artifact> newArtifacts)
    {
       for (JComponent checkBox : componentList)
       {
@@ -154,18 +155,18 @@ public class PlotterShowHideMenu extends JPanel implements ArtifactsChangedListe
       public ArtifactLabel(Artifact artifact)
       {
          this.artifact = artifact;
-         this.setPreferredSize(new Dimension(55, 55));
-         this.setBackground(new Color(180, 220, 240));
+         setPreferredSize(new Dimension(55, 55));
+         setBackground(new Color(180, 220, 240));
       }
 
       @Override
       protected void paintComponent(Graphics g)
       {
          plotter.getPlotter2DAdapter().setGraphics2d((Graphics2D) g);
-         
+
          super.paintComponent(g);
 
-         drawOrigin.set(this.getWidth() / 2.0, this.getHeight() / 2.0);
+         drawOrigin.set(getWidth() / 2.0, getHeight() / 2.0);
          artifact.drawLegend(plotter.getPlotter2DAdapter(), drawOrigin);
       }
    }
