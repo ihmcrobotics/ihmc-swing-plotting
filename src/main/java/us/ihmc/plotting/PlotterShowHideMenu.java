@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -46,7 +47,7 @@ public class PlotterShowHideMenu extends JPanel implements ArtifactsChangedListe
    }
 
    @Override
-   public void artifactsChanged(ArrayList<Artifact> newArtifacts)
+   public void artifactsChanged(List<Artifact> newArtifacts)
    {
       for (JComponent checkBox : componentList)
       {

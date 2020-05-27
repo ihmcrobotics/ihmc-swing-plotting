@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import us.ihmc.commons.FormattingTools;
 import us.ihmc.commons.MathTools;
 import us.ihmc.euclid.geometry.Line2D;
+import us.ihmc.euclid.geometry.interfaces.Line2DReadOnly;
 import us.ihmc.euclid.referenceFrame.ReferenceFrame;
 import us.ihmc.euclid.transform.RigidBodyTransform;
 import us.ihmc.euclid.tuple2D.Point2D;
@@ -913,7 +914,7 @@ public class Plotter implements PlotterInterface
       notifyArtifactsChangedListeners();
    }
 
-   public LineArtifact createAndAddLineArtifact(String name, Line2D line, Color color)
+   public LineArtifact createAndAddLineArtifact(String name, Line2DReadOnly line, Color color)
    {
       LineArtifact lineArtifact = new LineArtifact(name, line);
       lineArtifact.setColor(color);
