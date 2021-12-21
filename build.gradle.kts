@@ -15,7 +15,6 @@ ihmc {
 }
 
 mainDependencies {
-   api("org.apache.commons:commons-lang3:3.12.0")
    api("net.sf.trove4j:trove4j:3.0.3")
    api("org.jfree:jfreechart:1.0.17")
    api("org.jfree:jcommon:1.0.21")
