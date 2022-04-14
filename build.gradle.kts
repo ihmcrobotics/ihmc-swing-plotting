@@ -19,7 +19,7 @@ mainDependencies {
    api("org.jfree:jfreechart:1.0.17")
    api("org.jfree:jcommon:1.0.21")
 
-   api("us.ihmc:euclid:0.17.0")
+   api("us.ihmc:euclid:0.17.2")
    api("us.ihmc:ihmc-commons:0.30.5")
    api("us.ihmc:ihmc-graphics-description:0.19.4")
 }
