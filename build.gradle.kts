@@ -6,7 +6,7 @@ plugins {
 
 ihmc {
    group = "us.ihmc"
-   version = "0.19.6"
+   version = "0.19.7"
    vcsUrl = "https://github.com/ihmcrobotics/ihmc-swing-plotting"
    openSource = true
    
@@ -19,12 +19,12 @@ mainDependencies {
    api("org.jfree:jfreechart:1.0.19")
    api("org.jfree:jcommon:1.0.24")
 
-   api("us.ihmc:euclid:0.18.1")
+   api("us.ihmc:euclid:0.19.0")
    api("us.ihmc:ihmc-commons:0.31.0")
-   api("us.ihmc:ihmc-graphics-description:0.19.7")
+   api("us.ihmc:ihmc-graphics-description:0.19.8")
 }
 
 testDependencies {
    api("us.ihmc:ihmc-commons-testing:0.31.0")
-   api("us.ihmc:ihmc-graphics-description-test:0.19.7")
+   api("us.ihmc:ihmc-graphics-description-test:0.19.8")
 }
