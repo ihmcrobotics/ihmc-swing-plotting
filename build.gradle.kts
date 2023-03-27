@@ -6,7 +6,7 @@ plugins {
 
 ihmc {
    group = "us.ihmc"
-   version = "0.19.10"
+   version = "0.19.11"
    vcsUrl = "https://github.com/ihmcrobotics/ihmc-swing-plotting"
    openSource = true
    
